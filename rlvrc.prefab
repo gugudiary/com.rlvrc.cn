@@ -20852,9 +20852,9 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 6152347698639827209}
   LoadDuration: 5
   url:
-    url: https://rlvrc.cn/api/
+    url: https://api.rlvrc.cn/calendar/vrc/get/events/v1
   imageurl:
-    url: https://rlvrc.cn/api/ActivityImage/
+    url: https://bucket.rlvrc.cn/activity-calendar/vrc/poster/v1/merged_poster.jpg
   materialRend: {fileID: 5383389173762830609}
   ActivityContent: {fileID: 8718848575161543137}
   TagListContent: {fileID: 4867686430940764614}
