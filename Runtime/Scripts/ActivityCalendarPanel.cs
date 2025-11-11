@@ -1,4 +1,4 @@
-﻿using UdonSharp;
+using UdonSharp;
 using System;
 using UnityEngine;
 using UnityEditor;
@@ -27,6 +27,8 @@ public class ActivityCalendarPanel : UdonSharpBehaviour
     [SerializeField] private float offsetY;
     [SerializeField] private Toggle[] PageButton;
     [SerializeField] private RawImage[] rawImages;
+    [Header("调试开关")]
+    [SerializeField] private bool enableItemHeightLogs = false;
     private float nextLoadTime = 0f;
     private Texture2D downloadedTexture;
     private VRCImageDownloader imageDownloader;
@@ -202,7 +204,8 @@ public class ActivityCalendarPanel : UdonSharpBehaviour
         for (int i = start_i; i < ActivityContent.childCount; i++)
         {
             ActivityContent.GetChild(i).GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -id * (offsetY + itemhight));
-            Debug.Log(i + "个item的高度为" + ActivityContent.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y);
+            if (enableItemHeightLogs)
+                Debug.Log(i + "个item的高度为" + ActivityContent.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y);
             ActivityContent.GetChild(i).GetComponent<ActivityItem>().Id = id;
             id++;
         }
@@ -211,7 +214,8 @@ public class ActivityCalendarPanel : UdonSharpBehaviour
             for (int i = 0; i < start_i; i++)
             {
                 ActivityContent.GetChild(i).GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -id * (offsetY + itemhight));
-                Debug.Log(i + "个item的高度为" + ActivityContent.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y);
+                if (enableItemHeightLogs)
+                    Debug.Log(i + "个item的高度为" + ActivityContent.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y);
                 ActivityContent.GetChild(i).GetComponent<ActivityItem>().Id = id;
                 id++;
             }
